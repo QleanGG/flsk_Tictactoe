@@ -2,36 +2,46 @@
     const cells = document.querySelectorAll('.cell');
 
     //turn to play
-    let turn = 'X';
+    let turn = '';
 
     // number of moves they played
     let moveCounter = 0;
-
-    // gameboard tracker 
-    let gameBoard = ['', '', '', '', '', '', '', '', ''];
-    const winningCombinations = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-        [0, 4, 8], [2, 4, 6]             // Diagonals
-    ];
-
     
+   
+    const getTurn = async () => {
+        try {
+            const response = await axios.get('/get_turn');
+            return response.data.turn;
+        } catch (error) {
+            console.error('Error:', error);
+            return ''; // or handle the error in a way that makes sense for your application
+        }
+    };
+
+    const sendIndexToServer = (dataIndex) => {
+        axios.post('/play', { dataIndex })
+                .then(response => {
+                    console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
 
     // add x/o and checks for winners
-    function play(event) {
+    const play = async (event) => {
         if (event.target.innerText == '') {
-            event.target.innerText = turn;
-            const dataIndex = event.target.getAttribute('data-index');
-           gameBoard[dataIndex] = turn;
-            console.log(gameBoard);
-            turn = (turn == 'X' ? 'O' : 'X')
-            document.getElementById("gameMessage").innerHTML = `${turn} turn to play`;
-            moveCounter++;
-            determineWinner();
-        }
+            try {
+                const turn = await getTurn();
+                event.target.innerText = turn 
+                const dataIndex = event.target.getAttribute('data-index');
+                // send to server
+                sendIndexToServer(dataIndex)
 
-        if (moveCounter === 9 && checkWin() === false) {
-            document.getElementById("gameMessage").innerHTML = `That's a tie!`;
+            } catch(error) {
+                console.error('Error: ',error);
+            }
         }
     }
 
