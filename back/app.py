@@ -7,18 +7,26 @@ app = Flask(__name__)
 
 # '''variables I need'''
 
-turn = ''
+# winning combinations for tic tac toe
+winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], # Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
+            [0, 4, 8], [2, 4, 6]]             # Diagonals
+    
+turn = 'X'
+game_board = ['', '', '', '', '', '', '', '', '']
 
-def determine_turn():
-    global turn
-    if turn == '' or turn == 'O': turn = 'X'
-    else: turn = 'O'
-    return turn
+def check_winner(game_board, turn):
+    for combo in winningCombinations:
+        if all(game_board[i] == turn for i in combo):
+            print (turn +' wins!\n')
+            return True
+    return False
 
 @app.route('/get_turn')
 def get_turn():
-    current_turn = determine_turn()
-    return jsonify({'turn': current_turn}), 200
+    global turn
+    return jsonify({'turn': turn}), 200
 
 @app.route('/')
 def index():
@@ -26,20 +34,22 @@ def index():
 
 @app.route('/play', methods=['GET','POST'])
 def play():
-    turn = ''
-    # winning combinations for tic tac toe
-    winningCombinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], # Rows
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
-            [0, 4, 8], [2, 4, 6]]             # Diagonals
+    global game_board,turn
     
-    def receive_move():
-        pass
-        
+    if request.method == 'POST':
+        try:
+            data = request.get_json()
+            data_index = int(data.get('dataIndex'))
 
-    # Update the game state and return the updated state as JSON
-    # You might want to use Flask-SocketIO for real-time updates
-    # return jsonify({'message': 'Move played successfully'})
+            # Update the game board and turn based on the received data
+            game_board[data_index] = turn
+            check_winner(game_board,turn)
+            turn = 'O' if turn == 'X' else 'X'
+            return jsonify({'message': 'Move successful', 'gameBoard': game_board, 'turn': turn}), 200
+        except Exception as e:
+            print(str(e))
+            return jsonify({'message': 'Error processing the move'}), 500
+            
     return render_template('play.html')
 
 

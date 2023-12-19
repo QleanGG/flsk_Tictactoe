@@ -29,10 +29,10 @@
     }
 
 
-    // add x/o and checks for winners
+    // sends the cell to the array in the server
     const play = async (event) => {
         if (event.target.innerText == '') {
-            try {
+            try {   
                 const turn = await getTurn();
                 event.target.innerText = turn 
                 const dataIndex = event.target.getAttribute('data-index');
@@ -42,46 +42,7 @@
             } catch(error) {
                 console.error('Error: ',error);
             }
+        }else {
+            
         }
     }
-
-    // // check if someone wins
-    // function checkWin() {
-    //     // loops for every possible winning combination
-    //     for (let i = 0; i < winningCombinations.length; i++) {
-    //         let combo = winningCombinations[i];
-    //         let winX = 0, winO = 0;
-    //         // loops for the 3 combination positions to find a mark 
-    //         for (let j = 0; j < combo.length; j++) {
-    //             if (gameBoard[combo[j]] === 'X') {
-    //                 winX++;
-    //             }if(gameBoard[combo[j]] === 'O') {
-    //                 winO++;
-    //             }
-    //         }
-    //         if (winX === 3) {
-    //             return 'X';
-    //         } else if (winO === 3) {
-    //             return 'O';
-    //         }
-    //     } return false; // return false to check for tie
-    // }
-
-    // // declares the winner
-    // function determineWinner() {
-    //     if (checkWin() === "X") {//X won!
-    //         document.getElementById("gameMessage").innerHTML = `X is the winner!`;
-    //     } else if (checkWin() === "O") {//O won!
-    //         document.getElementById("gameMessage").innerHTML = `O is the winner!`;
-    //     }
-    // }
-
-    // //resets everything to the start of the game 
-    // function resetGame() {
-    //     gameBoard = ['', '', '', '', '', '', '', '', ''];
-    //     turn = 'X';
-    //     moveCounter = 0;
-    //     cells.forEach(cell => {cell.textContent = ''; });
-    //     document.getElementById("gameMessage").innerHTML = `${turn} turn to play`;
-    //     console.log(gameBoard);
-    // }
