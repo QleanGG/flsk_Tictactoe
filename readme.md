@@ -12,5 +12,5 @@ Please make sure to activate your server!
 - [X] added HTML and script for game
 - [X] Added server calls to js file
 - [X] Added Winner logic to the app.py
-- [] Style the website
+- [ ] Style the website
 - [X] Upload to Github
