@@ -41,17 +41,26 @@ def play():
             data = request.get_json()
             data_index = int(data.get('dataIndex'))
 
-            # Update the game board and turn based on the received data
+            # Update the game board 
             game_board[data_index] = turn
-            check_winner(game_board,turn)
+            
+            if check_winner(game_board,turn):
+                return jsonify({'message': f'{turn} wins!', 'turn': turn, 'winner': True}), 200
+
             turn = 'O' if turn == 'X' else 'X'
-            return jsonify({'message': 'Move successful', 'gameBoard': game_board, 'turn': turn}), 200
+            return jsonify({'message': 'Move successful', 'turn': turn}), 200
         except Exception as e:
             print(str(e))
             return jsonify({'message': 'Error processing the move'}), 500
             
     return render_template('play.html')
 
+@app.route('/reset_game')
+def reset_game():
+    global game_board, turn
+    game_board = ['', '', '', '', '', '', '', '', '']
+    turn = 'X'
+    return jsonify({'message': 'Game reset successfully','turn' : turn}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
