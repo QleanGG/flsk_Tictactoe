@@ -10,7 +10,7 @@ Please make sure to activate your server!
 ## to-do list
 
 - [X] added HTML and script for game
-- [] Added server calls to js file
-- [] Added logic to the app.py
-- [X] Style the website
-- [] Upload to Github
+- [X] Added server calls to js file
+- [X] Added Winner logic to the app.py
+- [] Style the website
+- [X] Upload to Github
