@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
 
 {% block content %}
 <div class="game-menu">
-    <a class="menu-option" href="/play/computer" id="one-player">1 Player</a>
-    <a class="menu-option" href="/play/player" id="two-players">2 Players</a>
+    <a class="btn btn-primary" href="/play/pvc" id="one-player">1 Player</a>
+    <a class="btn btn-primary" href="/play/pvp" id="two-players">2 Players</a>
 </div>
 {% endblock %}

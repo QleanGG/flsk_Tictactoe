@@ -67,9 +67,9 @@ body, html {
     cursor: pointer;
 }
 
-.menu-option:active {
+/* .menu-option:active {
     background: #0051a8;
-}
+} */
 
 .bottom-bar {
     background: #f7f7f7;

@@ -45,8 +45,8 @@ h1,h2 {
 }
 
 button {
-    background-color: blue;
-    color: white;
+    /* background-color: blue;
+    color: white; */
     border-radius: 20px;
     width: 130px;
     padding: 15px;
@@ -65,8 +65,12 @@ button {
 
 .btn-primary {
     margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 12px;
 }
+
 
 #game-area {
     padding: 300px;
 }
+

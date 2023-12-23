@@ -4,14 +4,12 @@
 
 ## How to use?
 
-You will need to install using the requierments.txt all the extensions I have used for this project
+You will need to install using the requierments.txt all the extensions I have used for this project<br>
 Please make sure to activate your server!
 
-## to-do list
+## Features
+- Main menu with two options: 1 player (Player vs Computer) or 2 Players (Player vs Player)
+- 1 player mode to play against the computer
+- 2 player mode to play against your friends (and foes)!
 
-- [X] added HTML and script for game
-- [X] Added server calls to js file
-- [X] Added Winner logic to the app.py
-- [ ] Style the website
-- [ ] Add CPU Mode
-- [X] Upload to Github
+Have fun!
