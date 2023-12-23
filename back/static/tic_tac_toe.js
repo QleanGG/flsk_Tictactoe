@@ -12,6 +12,10 @@ const sendIndexToServer = async (dataIndex) => {
             declareWinner(response.data.message)
             return true;
         }
+        if (response.data.message.includes('DRAW')) {
+            declareWinner(response.data.message)
+            return true;
+        }
         turn = response.data.turn;
     } catch (error) {
         console.error('Error:', error);

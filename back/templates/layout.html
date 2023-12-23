@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tic Tac Toe{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Include other head elements here -->
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-bar">
+            <!-- Status bar can be included here if needed -->
+            <h1 class="app-title">{% block header %}Tic Tac Toe{% endblock %}</h1>
+        </header>
+
+        {% block content %}
+        <!-- Game menu and content will be inserted here in child templates -->
+        {% endblock %}
+
+        <footer class="bottom-bar">
+            <!-- Footer content -->
+            {% block footer %}
+            <button class="bottom-icon"><i class="icon menu"></i></button>
+            <button class="bottom-icon"><i class="icon chat"></i></button>
+            <button class="bottom-icon"><i class="icon user"></i></button>
+            {% endblock %}
+        </footer>
+    </div>
+
+    <!-- Include any JavaScript files here -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>

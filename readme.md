@@ -13,4 +13,5 @@ Please make sure to activate your server!
 - [X] Added server calls to js file
 - [X] Added Winner logic to the app.py
 - [ ] Style the website
+- [ ] Add CPU Mode
 - [X] Upload to Github

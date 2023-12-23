@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>Tic Tac Toe</h1>
+{% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% endblock %}
+{% block content %}
+<div id="game-area">
     <h2 id="gameMessage">X turn to play</h2><br>
     <div class="game-container">
         <div class="game-board" id="game-board" onclick="play(event)">
@@ -25,7 +22,9 @@
     </div>
     <h3 id="errorMessage"></h3><br>
     <div class="button-area"><button onclick="resetGame()">Reset</button></div>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="{{ url_for('static', filename='tic_tac_toe.js') }}"></script>
-</body>
-</html>
+</div>
+{% endblock %}   
+{% block scripts %} 
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='tic_tac_toe.js') }}"></script>
+{% endblock %}   

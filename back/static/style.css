@@ -1,11 +1,12 @@
 body {
-    background-color: antiquewhite;
+   
     text-align: center;
 }
 
 
 h1,h2 {
     text-align: center;
+    margin: 20px;
 }
 
 .game-container {
@@ -49,6 +50,7 @@ button {
     border-radius: 20px;
     width: 130px;
     padding: 15px;
+    cursor: pointer;
 }
 
 .menu {
@@ -59,4 +61,12 @@ button {
     text-decoration: none;
     border-radius: 7px;
     text-align: center;
+}
+
+.btn-primary {
+    margin-bottom: 20px;
+}
+
+#game-area {
+    padding: 300px;
 }
